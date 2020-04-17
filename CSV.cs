@@ -55,7 +55,10 @@ namespace OpenCSV
             }
 
 
-            }
+            CsvDataToFile.WriteData();
+        }
+
+        
         }
     }
 

@@ -13,6 +13,21 @@ namespace OpenCSV
         public int AreaInSqKm { get; set; }
         public int DensityPerSqKm { get; set; }
 
+        /// <summary>
+        /// default constructor
+        /// </summary>
+        public Poco()
+        {
+
+        }
+
+        /// <summary>
+        /// parameterized constructor
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="population"></param>
+        /// <param name="area"></param>
+        /// <param name="density"></param>
         public Poco(string name, int population, int area, int density)
         {
             this.StateName = name;
@@ -20,6 +35,7 @@ namespace OpenCSV
             this.AreaInSqKm = area;
             this.DensityPerSqKm = density;
         }
+
     }
 
     public class PocoCsvToBean
