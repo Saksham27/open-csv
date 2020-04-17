@@ -48,7 +48,6 @@ namespace OpenCSV
                     Console.WriteLine(String.Join(" ", rec));
                 }
             }
-
             catch (FileNotFoundException file_not_found)
             {
                 throw new Exception(file_not_found.FileName);

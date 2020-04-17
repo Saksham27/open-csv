@@ -50,12 +50,14 @@ namespace OpenCSV
                 int fieldCount = csv.FieldCount;
                 List<Poco> data = new List<Poco>();
 
+                // mapping the csv file data to Poco object and adding it to data list
                 while (csv.ReadNextRecord())
                 {
                     Poco pocoObject = new Poco(csv[0], Int32.Parse(csv[1]), Int32.Parse(csv[2]), Int32.Parse(csv[3]));
                     data.Add(pocoObject);
                 }
 
+                // printing the csv file data
                 foreach(Poco record in data)
                 {
                     Console.WriteLine($"State : {record.StateName}\n Population : {record.Population}\n Area : {record.AreaInSqKm}\n Density : {record.DensityPerSqKm}");
