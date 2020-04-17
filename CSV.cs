@@ -19,33 +19,33 @@ namespace OpenCSV
             try
             {
                 // read csv file
-                using (CsvReader csvReader = new CsvReader(new StreamReader(File.OpenRead(@"C:\Users\Saksham\source\repos\OpenCSV\StateCensusData.csv")), true))
+                using CsvReader csvReader = new CsvReader(new StreamReader(File.OpenRead(@"C:\Users\Saksham\source\repos\OpenCSV\StateCensusData.csv")), true);
+                // getting no of fields
+                int fieldsCount = csvReader.FieldCount;
+                Console.WriteLine(fieldsCount);
+
+                // reading the headers in array
+                string[] headers = csvReader.GetFieldHeaders();
+
+                
+
+                List<string[]> records = new List<string[]>();
+                int i = 0;
+                // adding all rows to list
+                while (csvReader.ReadNextRecord())
                 {
-                    // getting no of fields
-                    int fieldsCount = csvReader.FieldCount;
-                    Console.WriteLine(fieldsCount);
+                    string[] recordsInARow = new string[fieldsCount];
 
-                    // reading the headers in array
-                    string[] headers = csvReader.GetFieldHeaders();
+                    csvReader.CopyCurrentRecordTo(recordsInARow);
+                    records.Add(recordsInARow);
+                    i++;
+                }
 
-                    //string[] recordsInARow = new string[fieldsCount];
 
-                    List<string[]> records = new List<string[]>();
-                    int i = 0;
-                    // adding all rows to list
-                    while (csvReader.ReadNextRecord())
-                    {
-                        string[] recordsInARow = new string[fieldsCount];
-                        
-                        csvReader.CopyCurrentRecordTo(recordsInARow);
-                        records.Add(recordsInARow);
-                        i++;       
-                    }
-                    // print the records
-                    foreach (string[] rec in records)
-                    {
-                        Console.WriteLine(String.Join(" ", rec));
-                    }
+                // print the records
+                foreach (string[] rec in records)
+                {
+                    Console.WriteLine(String.Join(" ", rec));
                 }
             }
 
